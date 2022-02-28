@@ -85,7 +85,7 @@ namespace TestApp.MVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View();
+            return View(etudiant);
         }
 
         // GET: EtudiantsController/Delete/5
