@@ -28,13 +28,14 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/*Testts.csproj'
+    projects: '**/*Tests.csproj'
   displayName: 'Exécution des tests unitaires'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: true
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
   displayName: 'Génération du package de publication'
 
 - task: PublishBuildArtifacts@1
