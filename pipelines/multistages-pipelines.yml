@@ -37,7 +37,7 @@ stages:
         command: 'test'
         projects: '**/*Tests.csproj'
         arguments: '--configuration $(buildConfiguration)'
-     displayName: 'Exécution des tests unitaires'
+      displayName: 'Exécution des tests unitaires'
     
     - task: DotNetCoreCLI@2
       inputs:
