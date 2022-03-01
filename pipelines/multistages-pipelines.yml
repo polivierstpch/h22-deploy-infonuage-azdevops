@@ -26,24 +26,24 @@ stages:
       displayName: 'restaurer les packages'
     
     - task: DotNetCoreCLI@2
-        inputs:
+      inputs:
          command: 'build'
          projects: '**/*.csproj'
          arguments: '--configuration $(buildConfiguration)'
       displayName: 'Génération de la solution'
 
-     - task: DotNetCoreCLI@2
-       inputs:
+    - task: DotNetCoreCLI@2
+      inputs:
         command: 'test'
         projects: '**/*Tests.csproj'
         arguments: '--configuration $(buildConfiguration)'
      displayName: 'Exécution des tests unitaires'
-
+    
     - task: DotNetCoreCLI@2
       inputs:
-       command: 'publish'
-       publishWebProjects: true
-       arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+        command: 'publish'
+        publishWebProjects: true
+        arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
      displayName: 'Génération du package de publication'
 
 - stage : 'DeployToDev' 
