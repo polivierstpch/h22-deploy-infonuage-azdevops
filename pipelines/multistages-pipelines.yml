@@ -45,7 +45,13 @@ stages:
          publishWebProjects: true
          arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
         displayName: 'Génération du package de publication'
-
+      - task: PublishBuildArtifacts@1
+        inputs:
+         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+         ArtifactName: 'drop'
+         publishLocation: 'Container'
+        displayName: 'Publication du package dans Azure DevOps'
+        
 - stage : 'DeployToDev' 
   displayName:  'Déploiment en Dev'
   pool:
