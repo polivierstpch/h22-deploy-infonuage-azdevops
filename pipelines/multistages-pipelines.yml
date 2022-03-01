@@ -77,5 +77,5 @@ stages:
               azureSubscription: '$(serviceConnection)'
               appType: 'webApp'
               WebAppName: 'webapp-h22-dev-120'
-              package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+              package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
              displayName: 'déploiment de application'
