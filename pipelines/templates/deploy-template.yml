@@ -17,12 +17,12 @@ jobs:
              inputs:
                buildType: 'current'
                downloadType: 'single'
-               artifactName: $(artifactName)
+               artifactName: '$(artifactName)'
                downloadPath: '$(System.ArtifactsDirectory)'
            - task: AzureRmWebAppDeployment@4
              inputs:
               ConnectionType: 'AzureRM'
-              azureSubscription: $(serviceConnection)
+              azureSubscription: '$(serviceConnection)'
               appType: 'webApp'
-              WebAppName: $(webAppName)
+              WebAppName: '$(webAppName)'
               package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
