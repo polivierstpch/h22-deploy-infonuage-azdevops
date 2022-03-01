@@ -30,5 +30,5 @@ stages:
       environment: 'h22-developpement'
       artifactName: $(artifactName)
       serviceConnection: $(serviceConnection)
-      webAppName: 'webapp-h22-dev-121'
+      webAppName: 'webapp-h22-dev-122'
 
