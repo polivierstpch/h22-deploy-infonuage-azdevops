@@ -27,7 +27,7 @@ stages:
   jobs:
   - template: templates/deploy-template.yml
     parameters:
-      environment: 'developpement'
+      environment: 'h22-developpement'
       artifactName: $(artifactName)
       serviceConnection: $(serviceConnection)
       webAppName: 'webapp-h22-dev-121'
