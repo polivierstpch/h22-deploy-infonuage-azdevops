@@ -10,6 +10,8 @@ variables:
   buildConfiguration: 'Release'
   serviceConnection : 'az-serviceprincipal'
   artifactName: 'drop'
+  environment: 'h22-developpement'
+  webAppName: 'webapp-h22-dev-122'
 
 stages:
 - stage : 'Build' 
@@ -27,8 +29,8 @@ stages:
   jobs:
   - template: templates/deploy-template.yml
     parameters:
-      environment: 'h22-developpement'
+      environment: $(environment)
       artifactName: $(artifactName)
       serviceConnection: $(serviceConnection)
-      webAppName: 'webapp-h22-dev-122'
+      webAppName: $(webAppName)
 

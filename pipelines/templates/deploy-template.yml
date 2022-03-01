@@ -17,7 +17,7 @@ jobs:
               echo Major: $(webAppName)
               echo Major: $(environment)
               echo Major: $(artifactName)
-              echo Major : $(serviceConnection)
+              echo Major: $(serviceConnection)
            - task: DownloadBuildArtifacts@0
              inputs:
                buildType: 'current'
