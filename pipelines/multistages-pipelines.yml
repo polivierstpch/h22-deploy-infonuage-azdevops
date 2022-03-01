@@ -25,7 +25,7 @@ stages:
          feedsToUse: 'select'
       displayName: 'restaurer les packages'
     
-      - task: DotNetCoreCLI@2
+    - task: DotNetCoreCLI@2
         inputs:
          command: 'build'
          projects: '**/*.csproj'
