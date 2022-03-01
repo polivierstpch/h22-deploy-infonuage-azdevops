@@ -13,6 +13,8 @@ jobs:
         runOnce:
          deploy:
            steps:
+           - script: |
+              echo Major: '$(webAppName)'
            - task: DownloadBuildArtifacts@0
              inputs:
                buildType: 'current'
