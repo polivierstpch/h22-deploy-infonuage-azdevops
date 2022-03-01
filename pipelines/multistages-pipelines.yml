@@ -76,6 +76,6 @@ stages:
               ConnectionType: 'AzureRM'
               azureSubscription: '$(serviceConnection)'
               appType: 'webApp'
-              WebAppName: 'webapp-h22-dev-120'
+              WebAppName: 'webapp-h22-dev-121'
               package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
              displayName: 'déploiment de application'
