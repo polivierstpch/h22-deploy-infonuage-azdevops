@@ -2,7 +2,7 @@ parameters:
     environment: ''
     artifactName: ''
     serviceConnection: ''
-    webAppName: ''
+    webAppName: 'test110'
 
 jobs:
 - deployment : 'WebDeploy'
@@ -14,7 +14,10 @@ jobs:
          deploy:
            steps:
            - script: |
-              echo Major: '$(webAppName)'
+              echo Major: $(webAppName)
+              echo Major: $(environment)
+              echo Major: $(artifactName)
+              echo Major : $(serviceConnection)
            - task: DownloadBuildArtifacts@0
              inputs:
                buildType: 'current'
