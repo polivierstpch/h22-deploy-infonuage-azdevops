@@ -14,7 +14,7 @@ variables:
   resourceGroupName: 'rg-test-devops'
   location: 'canadacentral'
   templateFile: '**/main.bicep'
-  webAppName: 'webapp-h22-dev-121'
+  webAppName: 'webapp-h22-dev-122'
 
 steps:
 
