@@ -8,7 +8,7 @@ trigger:
 
 variables:
   buildConfiguration: 'Release'
-  serviceConnection : 'azure-labs-connection'
+  serviceConnection : 'az-serviceprincipal'
 
 stages:
 - stage : 'Build' 
@@ -24,7 +24,27 @@ stages:
          projects: '**/*.csproj'
          feedsToUse: 'select'
       displayName: 'restaurer les packages'
-    ## Ajout de toutes les tâches de builds 
+    
+      - task: DotNetCoreCLI@2
+        inputs:
+         command: 'build'
+         projects: '**/*.csproj'
+         arguments: '--configuration $(buildConfiguration)'
+      displayName: 'Génération de la solution'
+
+     - task: DotNetCoreCLI@2
+       inputs:
+        command: 'test'
+        projects: '**/*Tests.csproj'
+        arguments: '--configuration $(buildConfiguration)'
+     displayName: 'Exécution des tests unitaires'
+
+    - task: DotNetCoreCLI@2
+      inputs:
+       command: 'publish'
+       publishWebProjects: true
+       arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+     displayName: 'Génération du package de publication'
 
 - stage : 'DeployToDev' 
   displayName:  'Déploiment en Dev'
@@ -38,3 +58,18 @@ stages:
         runOnce:
          deploy:
            steps:
+           - task: DownloadBuildArtifacts@0
+             inputs:
+               buildType: 'current'
+               downloadType: 'single'
+               artifactName: 'drop'
+               downloadPath: '$(System.ArtifactsDirectory)'
+             displayName: 'Téléchargement du package'
+           - task: AzureRmWebAppDeployment@4
+             inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: '$(serviceConnection)'
+              appType: 'webApp'
+              WebAppName: 'webapp-h22-dev-120'
+              package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+             displayName: 'déploiment de application'
