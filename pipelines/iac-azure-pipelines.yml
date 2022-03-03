@@ -15,6 +15,7 @@ variables:
   location: 'canadacentral'
   templateFile: '**/main.bicep'
   webAppName: 'webapp-h22-dev-122'
+  webAppProdName: 'webapp-h22-prod-122'
 
 steps:
 
@@ -27,3 +28,11 @@ steps:
       az --version
       az group create --name $(resourceGroupName) --location $(location)
       az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters appName=$(webAppName)
+  displayName: 'Environnement de développement'
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: $(serviceConnection)
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      az deployment group create --resource-group $(resourceGroupName) --template-file $(templateFile) --parameters appName=$(webAppProdName)
