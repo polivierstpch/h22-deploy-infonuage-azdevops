@@ -14,8 +14,8 @@ variables:
   resourceGroupName: 'rg-postpch-test-devops'
   location: 'canadacentral'
   templateFile: '**/main.bicep'
-  webAppName: 'webapp-h22-dev-122'
-  webAppProdName: 'webapp-h22-prod-122'
+  webAppName: 'webapp-h22-postpch-dev-122'
+  webAppProdName: 'webapp-h22-postpch-prod-122'
 
 steps:
 
