@@ -10,8 +10,8 @@ pool:
   vmImage: ubuntu-latest
  
 variables:
-  serviceConnection : 'az-serviceprincipal'
-  resourceGroupName: 'rg-test-devops'
+  serviceConnection : 'ConnexionTest'
+  resourceGroupName: 'rg-postpch-test-devops'
   location: 'canadacentral'
   templateFile: '**/main.bicep'
   webAppName: 'webapp-h22-dev-122'
